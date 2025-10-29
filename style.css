@@ -1,0 +1,46 @@
+body {
+  background: black;
+  color: white;
+  margin: 0;
+  padding: 0;
+  font-family: 'Courier New', monospace;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+}
+
+#cinema {
+  text-align: center;
+  font-size: 1.2em;
+  white-space: pre-line;
+  line-height: 1.6em;
+  max-width: 90%;
+  animation: grain 8s steps(10) infinite;
+}
+
+/* Grain flicker effect */
+@keyframes grain {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.97; }
+}
+
+/* Scene title */
+.scene-title {
+  font-weight: bold;
+  font-size: 1.5em;
+  margin-bottom: 20px;
+}
+
+/* Stylish font for A's early lines */
+.a-stylish {
+  font-family: 'Georgia', serif;
+  font-style: italic;
+  letter-spacing: 1px;
+}
+
+/* Normal Courier font */
+.a-normal, .b-line {
+  font-family: 'Courier New', monospace;
+}
