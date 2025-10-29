@@ -44,7 +44,7 @@ const scenes = [
     {speaker: "", text: `
   <a href='#' onclick='location.reload()' style='color:white; text-decoration:underline; cursor:pointer;'>Replay</a>
   <br><br>
-  <a href='Threshold-The Complete journey/index.html' target='_blank' style='
+  <a href='TCJ/index.html' target='_blank' style='
     color:white;
     background:transparent;
     border:1px solid white;
