@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>You | THRESHOLD</title>
+<style>
+  /* ---- Replace 'YourFontFile.ttf' with your real font filename ---- */
+  @font-face {
+    font-family: 'ThresholdFont';
+    src: url('YourFontFile.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  :root{
+    --bg:#000;
+    --fg:#fff;
+    --muted: #bfbfbf;
+    --input-border: rgba(255,255,255,0.06);
+  }
+
+  html,body{
+    height:100%;
+    margin:0;
+    background:var(--bg);
+    color:var(--fg);
+    font-family: 'ThresholdFont', "Courier New", Courier, monospace;
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+  }
+
+  /* center and allow vertical scroll for smaller screens */
+  .wrap {
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:flex-start;
+    padding:6vh 20px 8vh;
+    box-sizing:border-box;
+    gap:36px;
+  }
+
+  main {
+    width:100%;
+    max-width:900px;
+    display:flex;
+    flex-direction:column;
+    gap:48px;
+    align-items:center;
+  }
+
+  section {
+    width:100%;
+    max-width:820px;
+    text-align:center;
+    line-height:1.6;
+    color:var(--fg);
+    font-size:16px;
+    padding:6px 12px;
+    box-sizing:border-box;
+  }
+
+  /* keep text weight uniform (no bold) */
+  section p, section div { font-weight:normal; margin:0; }
+
+  /* scene spacing */
+  .scene { margin-top:12px; }
+
+  /* textarea (confession) styled to match the site */
+  textarea#confession {
+    width:100%;
+    max-width:820px;
+    min-height:100px;
+    resize:vertical;
+    background:transparent;
+    color:var(--fg);
+    border:1px solid var(--input-border);
+    padding:12px;
+    border-radius:6px;
+    font-family: inherit;
+    font-size:15px;
+    box-sizing:border-box;
+    outline:none;
+  }
+
+  /* button */
+  .btn {
+    margin-top:12px;
+    padding:8px 12px;
+    border-radius:6px;
+    background:transparent;
+    color:var(--fg);
+    border:1px solid var(--fg);
+    cursor:pointer;
+    font-family: inherit;
+    font-size:14px;
+  }
+  .btn:hover{ background:var(--fg); color:var(--bg); }
+
+  /* small caption */
+  .small { color:var(--muted); font-size:13px; margin-top:8px; }
+
+  /* subtle fade-in for the whole page */
+  .fade-in { animation:fadeIn 700ms ease both; }
+  @keyframes fadeIn { from{ opacity:0; transform:translateY(8px);} to{opacity:1; transform:none;} }
+
+  @media (max-width:600px){
+    .wrap{ padding:7vh 14px; }
+    section { font-size:15px; }
+  }
+</style>
+</head>
+<body>
+  <div class="wrap fade-in">
+    <main>
+      <!-- 1. Reflective Monologue -->
+      <section id="s1" class="scene">
+        <p>You’ve seen the film.<br>
+        You’ve watched the mask fall, the mirror crack.<br>
+        Now ask yourself:<br>
+        Which voice were you — A or B?<br>
+        And what happens when the credits roll,<br>
+        but you’re still here?</p>
+      </section>
+
+      <!-- 2. Mirror Prompt (interactive textarea) -->
+      <section id="s2" class="scene" aria-labelledby="s2">
+        <p>Type one thing you’re ready to let go of.Press "Cross" when done writing</p>
+        <textarea id="confession" placeholder="Your mask..."></textarea>
+        <div>
+          <button class="btn" onclick="submitConfession()">Cross</button>
+        </div>
+        <div class="small">Your reflection is local to this page only — nothing is sent anywhere.</div>
+      </section>
+
+      <!-- 3. Cinematic Closure -->
+      <section id="s3" class="scene">
+        <p>You.<br>
+        That’s who it was always about.<br>
+        The dialogue was inside your head,<br>
+        the mask was yours,<br>
+        the silence too.<br>
+        Threshold wasn’t a film.<br>
+        It was a mirror.</p>
+      </section>
+
+      <!-- 4. Philosophical Fragment -->
+      <section id="s4" class="scene">
+        <p>You’re both the question and the answer.<br>
+        The silence and the scream.<br>
+        The director and the scene.<br>
+        Threshold was never meant to end.<br>
+        It was meant to begin — with you.</p>
+      </section>
+
+      <!-- 5. Personal Note -->
+<section id="s5">
+  <p>I made Threshold when I got tired of pretending.<br>
+  Every scene is something I killed inside myself.<br>
+  And if you felt anything,<br>
+  even for a second,<br>
+  then you’ve already crossed your own
+  <a href="threshold.html" style="color: white; text-decoration: none;">Threshold</a>
+<br><br>
+  — Aditya Bhatia</p><br></br>
+ 
+  <a href="index.html" style="color: white;">CLICK:BACK TO TCJ</a></p>
+
+
+
+ 
+</section>
+
+
+      <div class="small">Click anywhere to start ambient sound.</div>
+    </main>
+  </div>
+
+  <!-- ambient audio (starts on first click) -->
+  <audio id="ambient" src="moonvenus.mp3" loop></audio>
+
+  <script>
+    // Play audio on first click (works around autoplay rules)
+    function startAudioOnce() {
+      const a = document.getElementById('ambient');
+      if (!a) return;
+      a.volume = 0.1; // low background
+      a.play().catch(e => console.log('Audio blocked', e));
+      window.removeEventListener('click', startAudioOnce);
+    }
+    window.addEventListener('click', startAudioOnce);
+
+    // confession interaction: replace area with message
+    function submitConfession(){
+      const t = document.getElementById('confession').value.trim();
+      const s2 = document.getElementById('s2');
+      s2.innerHTML = `
+        <p>You crossed it.</p>
+        <p style="margin-top:12px;">${escapeHtml(t || 'The silence')}</p>
+        <div style="margin-top:14px;"><button class="btn" onclick="location.reload()">Return</button></div>
+      `;
+    }
+
+    // small escape helper
+    function escapeHtml(s){
+      return s.replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+    }
+  </script>
+</body>
+</html>

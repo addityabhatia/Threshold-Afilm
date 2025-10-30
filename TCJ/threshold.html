@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>thx2fincher</title>
+  <style>
+    /* ---- Use your project font file here ---- */
+    @font-face {
+      font-family: 'ThresholdFont';
+      src: url('YourFontFile.ttf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: 'ThresholdDisplay';
+      src: local('Poppins'), local('Arial Black'), local('Impact'), local('Segoe UI Black');
+      font-weight: 900;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    :root {
+      --bg: #fff;
+      --fg: #000;
+    }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      background: var(--bg);
+      color: var(--fg);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    .stage {
+      position: relative;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    /* Thanks text */
+    #thanks {
+      position: absolute;
+      width: 100%;
+      top: 50%;
+      transform: translateY(-50%);
+      text-align: center;
+      font-family: 'ThresholdFont', monospace;
+      font-size: 18px;
+      color: var(--fg);
+      opacity: 1;
+      transition: opacity 2s ease;
+    }
+
+    /* Final screen */
+    #final-screen {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      text-align: center;
+      opacity: 0;
+      transition: opacity 2s ease;
+      padding: 40px 20px 40px;
+      box-sizing: border-box;
+    }
+
+    /* Title at top center */
+    #final-screen h1 {
+      margin: 40px 0 0 0;
+      font-family: 'ThresholdDisplay', 'ThresholdFont', sans-serif;
+      font-weight: 900;
+      font-size: 48px;
+      letter-spacing: 1px;
+      text-transform: lowercase;
+      color: var(--fg);
+    }
+
+    /* Quote at bottom center */
+    #bottom {
+      margin-bottom: 60px;
+    }
+
+    #quote {
+      font-family: 'ThresholdFont', monospace;
+      font-size: 15px;
+      line-height: 1.4;
+      color: var(--fg);
+      margin: 0;
+    }
+
+    #credit {
+      margin-top: 8px;
+      font-family: 'ThresholdFont', monospace;
+      font-size: 12px;
+      color: var(--fg);
+      opacity: 0.8;
+    }
+
+    @media (max-width:700px){
+      #final-screen h1 { font-size: 34px; }
+      #quote { font-size: 13px; }
+      #thanks { font-size: 16px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="stage">
+    <div id="thanks">Thanks for watching.</div>
+
+    <div id="final-screen" aria-hidden="true">
+      <h1>threshold</h1>
+      <div id="bottom">
+        <p id="quote">
+"Ernest Hemingway once wrote, 'The world is a fine place and worth fighting for.' I agree with the second part". 
+        </p>
+        <div id="credit">—<i>Se7en(1995)</i></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // show thanks for 4s, fade to final screen
+    setTimeout(() => {
+      const t = document.getElementById('thanks');
+      const f = document.getElementById('final-screen');
+      t.style.opacity = 0;
+      setTimeout(() => {
+        t.style.display = 'none';
+        f.style.opacity = 1;
+        f.setAttribute('aria-hidden', 'false');
+      }, 2000);
+    }, 4000);
+  </script>
+</body>
+</html>

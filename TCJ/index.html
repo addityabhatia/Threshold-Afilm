@@ -4,66 +4,72 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>THRESHOLD: The Complete Journey</title>
-  <style>
-    body {
-      margin: 0;
-      height: 100vh;
-      background-color: black;
-      color: white;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      font-family: 'Helvetica Neue', Arial, sans-serif;
-      text-align: center;
-    }
+<style>
+  body {
+    margin: 0;
+    height: 100vh;
+    background-color: black;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: normal;
+    text-align: center;
+  }
 
-    h1 {
-      font-size: 3rem;
-      margin-bottom: 0.5rem;
-      letter-spacing: 2px;
-    }
+  h1, p {
+    font-weight: normal;
+    letter-spacing: 2px;
+    margin: 0.4rem 0;
+  }
 
-    p {
-      font-size: 1.2rem;
-      color: #ccc;
-      margin: 0.3rem 0;
-    }
+  h1 {
+    font-size: 2rem;
+  }
 
-    .subtitle {
-      font-size: 0.9rem;
-      margin-bottom: 3rem;
-      color: #888;
-    }
+  p {
+    font-size: 1rem;
+    color: #ccc;
+  }
 
-    .buttons {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 1rem;
-    }
+  .subtitle {
+    font-size: 0.9rem;
+    color: #888;
+    margin-bottom: 3rem;
+  }
 
-    .btn {
-      background: transparent;
-      border: 1px solid white;
-      color: white;
-      padding: 0.7rem 1.5rem;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
+  .buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+  }
 
-    .btn:hover {
-      background-color: white;
-      color: black;
-      transform: translateY(-3px);
-    }
+  .btn {
+    background: transparent;
+    border: 1px solid white;
+    color: white;
+    padding: 0.7rem 1.5rem;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: inherit;
+    font-weight: normal;
+  }
 
-    @media (max-width: 600px) {
-      h1 { font-size: 2rem; }
-      .btn { padding: 0.5rem 1rem; font-size: 0.9rem; }
-    }
-  </style>
+  .btn:hover {
+    background-color: white;
+    color: black;
+    transform: translateY(-3px);
+  }
+
+  @media (max-width: 600px) {
+    h1 { font-size: 1.6rem; }
+    .btn { padding: 0.5rem 1rem; font-size: 0.9rem; }
+  }
+</style>
 </head>
 <body>
 
@@ -73,7 +79,7 @@
     <p class="subtitle">An experience by Aditya Bhatia (Director’s Cut)</p>
 
     <div class="buttons">
-      <button class="btn" onclick="location.href='film.html'">Film</button>
+      <button class="btn" onclick="location.href='https://abdirects-threshold.netlify.app/'">Film</button>
       <button class="btn" onclick="location.href='trailer.html'">Trailer</button>
       <button class="btn" onclick="location.href='meaning.html'">Meaning</button>
       <button class="btn" onclick="location.href='notes.html'">Notes</button>

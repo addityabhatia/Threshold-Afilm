@@ -117,16 +117,8 @@ function startAudio() {
 }
 
 window.addEventListener('click', startAudio);
-function showEnding() {
-  cinema.textContent = "";
-  const ending = scenes[scenes.length - 1];
-  for (let line of ending.lines) {
-    const div = document.createElement("div");
-    div.className = line.style;
-    div.innerHTML = (line.speaker ? line.speaker + ": " : "") + line.text;
-    cinema.appendChild(div);
-  }
-}
 
-showEnding();
+
+playMovie();
+
 
