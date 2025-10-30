@@ -88,29 +88,45 @@ async function typeLine(text, style) {
 }
 
 async function playMovie() {
-  // Title Threshold
+  // Show title card
   cinema.textContent = "THRESHOLD";
   await delay(5000);
   cinema.textContent = "";
   await delay(2000);
 
-  for (let scene of scenes) {
+  // Play each scene in order
+  for (let i = 0; i < scenes.length; i++) {
+    const scene = scenes[i];
+
+    // Show scene label briefly (if you still want it)
     cinema.textContent = "Scene: " + scene.title;
     await delay(2000);
     cinema.textContent = "";
     await delay(500);
-    for (let line of scene.lines) {
+
+    // Print all lines for this scene
+    for (const line of scene.lines) {
       await typeLine((line.speaker ? line.speaker + ": " : "") + line.text, line.style);
       await delay(500);
     }
-if (scene.title !== "Ending") {
-  await delay(7000);
-  cinema.textContent = "";
-}
+
+    // If this is the Ending scene, stop here and leave it visible forever
+    if (scene.title === "Ending") {
+      // Ensure the ending stays on screen: do NOT clear cinema.textContent
+      // Exit the loop cleanly
+      break;
+    }
+
+    // For all non-ending scenes, wait then clear for the next scene
+    await delay(7000);
+    cinema.textContent = "";
   }
+
+  // function ends naturally — nothing else runs after the ending stays visible
 }
+
 const audio = new Audio('moonvenus.mp3');
-audio.loop = true;
+audio.loop = false;
 audio.volume = 0.4; 
 // Wait for first user interaction to play music
 function startAudio() {
