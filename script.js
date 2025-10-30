@@ -103,8 +103,10 @@ async function playMovie() {
       await typeLine((line.speaker ? line.speaker + ": " : "") + line.text, line.style);
       await delay(500);
     }
-    await delay(7000);
-    cinema.textContent = "";
+if (scene.title !== "Ending") {
+  await delay(7000);
+  cinema.textContent = "";
+}
   }
 }
 const audio = new Audio('moonvenus.mp3');

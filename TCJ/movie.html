@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>THRESHOLD : FILM</title>
+  <style>
+    :root {
+      --bg: #000;
+      --fg: #fff;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: var(--bg);
+      color: var(--fg);
+      font-family: 'Courier New', Courier, monospace;
+      line-height: 1.6;
+      letter-spacing: 0.3px;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-y: auto;
+    }
+
+    #container {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 60px 20px 100px;
+      box-sizing: border-box;
+    }
+
+    h1 {
+      font-size: 26px;
+      font-weight: normal;
+      margin-bottom: 50px;
+      text-align: center;
+      color: var(--fg);
+      letter-spacing: 2px;
+    }
+
+    .line {
+      margin: 6px 0;
+      font-size: 18px;
+      text-align: center;
+    }
+
+    a {
+      color: var(--fg);
+      text-decoration: underline;
+      cursor: pointer;
+    }
+
+    a:hover {
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <div id="container">
+    <h1>THRESHOLD : FILM</h1>
+    <div id="cinema"></div>
+  </div>
+
+  <script>
+    const lines = [
+      "A: I wear a version of myself.",
+      "B: That mask doesn’t fit.",
+      "A: It’s not for me. It’s for the crowd.",
+      "B: Funny thing—no one’s watching.",
+      "",
+      "A: I run. Always run.",
+      "B: From what?",
+      "A: The mirror.",
+      "B: Careful. Even the finish line reflects.",
+      "",
+      "B: You’re gripping the wheel too hard.",
+      "A: If I let go, I crash.",
+      "B: If you hold on, you strangle yourself.",
+      "A: So either way, I lose?",
+      "B: That’s the game.",
+      "",
+      "A: …say something.",
+      "B: You’re loud enough.",
+      "A: That was cruel.",
+      "B: That was honest.",
+      "",
+      "A: It’s all… empty.",
+      "B: Now you see it.",
+      "A: So what fills it?",
+      "B: That’s your joke to write.",
+      "",
+      "B: So, what now?",
+      "A: I thought you’d tell me.",
+      "B: I just did.",
+      "A: …nothing.",
+      "",
+      "THE END",
+      "Directed by AB",
+      "Screenplay by Aditya Bhatia",
+      "THRESHOLD",
+      "<a href='#' onclick='location.reload()'>Replay</a>"
+    ];
+
+    const cinema = document.getElementById("cinema");
+
+    for (const line of lines) {
+      const div = document.createElement("div");
+      div.className = "line";
+      if (line.includes("<a")) {
+        div.innerHTML = line;
+      } else {
+        div.textContent = line;
+      }
+      cinema.appendChild(div);
+    }
+  </script>
+  <div style="text-align: center;">
+  <a href="index.html" style="color: white;">CLICK:BACK TO TCJ</a></p>
+
+  <a href="https://abdirects-threshold.netlify.app/" style="color: white;">THE WHOLE FILM(MAIN SHOWCASE)</a></p>
+
+Click anywhere to start sound.
+</div>
+<script>
+const audio = new Audio('spedup.wav'); // your audio file name
+audio.loop = true;          // keeps playing in background
+audio.volume = 0.3;         // volume (0.0 to 1.0)
+
+// wait for first user interaction to start sound
+window.addEventListener('click', function startAudio() {
+  audio.play().catch(err => console.log('Autoplay blocked:', err));
+  window.removeEventListener('click', startAudio);
+});
+</script>
+</body>
+</html>
