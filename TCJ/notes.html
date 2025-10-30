@@ -1,1 +1,75 @@
-soon
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Notes — THRESHOLD</title>
+  <style>
+    /* use your original font if available, otherwise fallback to Courier */
+    @font-face {
+      font-family: 'ThresholdFont';
+      src: url('YourFontFile.ttf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    :root{
+      --bg: #000;
+      --fg: #fff;
+    }
+
+    html,body{
+      height:100%;
+      margin:0;
+      background:var(--bg);
+      color:var(--fg);
+      font-family: 'ThresholdFont', 'Courier New', Courier, monospace;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+    }
+
+    .wrap {
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      padding: 24px;
+      box-sizing: border-box;
+    }
+
+    .content {
+      max-width: 900px;
+    }
+
+    .title {
+      font-size: 28px;       /* title size */
+      margin: 0 0 18px 0;
+      font-weight: normal;
+      letter-spacing: 1px;
+    }
+
+    .coming {
+      font-size: 12px;       /* small size but ALL CAPS */
+      margin: 0;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      opacity: 0.95;
+    }
+
+    @media (max-width:600px){
+      .title { font-size: 22px; }
+      .coming { font-size: 11px; letter-spacing:1.5px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="content">
+      <div class="title">Notes</div>
+      <div class="coming">COMING SOON</div>
+    </div>
+  </div>
+</body>
+</html>
